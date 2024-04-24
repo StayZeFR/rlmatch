@@ -1,0 +1,58 @@
+#navigation {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    width: 50%;
+    height: 50px;
+    position: fixed;
+    margin: 0;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    display: grid;
+    grid-template-columns: 50px auto 250px;
+    border-radius: 0 0 5px 5px;
+}
+
+#navigation > .left > img {
+    width: 100%;
+    height: 100%;
+}
+
+#navigation > .center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+#navigation > .center > a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 20px;
+}
+
+#navigation > .right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+#navigation > .right > a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 20px;
+}
+
+#navigation > .right > .login {
+    border: 1px solid #ED7F10;
+    border-radius: 5px;
+}
+
+#navigation > .right > .register {
+    background-color: #ED7F10;
+    border-radius: 5px;
+}
