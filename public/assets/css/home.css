@@ -1,7 +1,6 @@
 #content {
-    width: 1000px;
-    min-width: 500px;
-    height: 500px;
+    width: 980px;
+    min-height: 500px;
     background-color: #333;
     box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
     position: absolute;
@@ -13,29 +12,36 @@
     opacity: 0.85;
 }
 
-#content > #search > form {
+@media screen and (max-width: 1000px) {
+    #content {
+        width: calc(100% - 20px);
+        padding: 10px;
+    }
+}
+
+#content > .header > form {
     display: flex;
     flex-direction: row;
     gap: 5px;
 }
 
-#content > #search > form > div {
+#content > .header > form > div {
     display: flex;
     flex-direction: column;
     gap: 5px;
     width: 300px;
 }
 
-#content > #search > form > div > label {
+#content > .header > form > div > .search-label {
     font-size: 13px;
     color: #999999;
 }
 
-#content > #search > form > div > .search-input:focus {
+#content > .header > form > div > .search-input:focus {
     outline: none;
 }
 
-#content > #search > form > div > .search-input {
+#content > .header > form > div > .search-input {
     height: 30px;
     border-radius: 5px;
     border: 1px solid #333;
@@ -44,40 +50,58 @@
     color: #999999;
 }
 
-#content > #search > form > div > select {
-    width: 100%;
-    min-width: 100px;
-
-}
-
-#content > #search > form > div > .search-input[type="text"] {
+#content > .header > form > div > .search-input[type="text"] {
     width: calc(100% - 10px);
     height: 28px;
 }
 
-#content > #search > form > div > .search-input[type="text"]::placeholder {
+#content > .header > form > div > .search-input[type="text"]::placeholder {
     color: #999999;
 }
-#content > #matches {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; /* Adjust as needed */
-    align-items: flex-start;
+
+#content > .matches {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
+    padding: 10px;
 }
 
-#content > #matches > .match {
-    width: 200px; /* Adjust width as needed */
+#content > .matches > .match {
+    grid-column: auto;
     height: 100px;
     background-color: #404040;
     border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     padding: 10px;
-    margin: 10px; /* Adjust margin as needed */
+}
+
+@media screen and (max-width: 800px) {
+    #content > .matches {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #content > .matches > .match {
+        grid-column: auto / span 1;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #content > .matches {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #content > .matches > .match {
+        grid-column: auto / span 1;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #content > .matches {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #content > .matches > .match {
+        grid-column: auto / span 1;
+    }
 }
 
 

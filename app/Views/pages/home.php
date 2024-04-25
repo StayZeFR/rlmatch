@@ -6,11 +6,11 @@
 
 <?= $this->section("main") ?>
     <div id="content">
-        <div id="search">
+        <div class="header">
             <form action="" method="get">
                 <div>
-                    <label for="type" id="type">Type de match</label>
-                    <select name="type" class="search-input">
+                    <label for="type" class="search-label">Type de match</label>
+                    <select name="type" id="type" class="search-input">
                         <option value="">Tous</option>
                         <option value="1vs1">1vs1</option>
                         <option value="2vs2">2vs2</option>
@@ -18,13 +18,14 @@
                     </select>
                 </div>
                 <div>
-                    <label for="search">Recherche</label>
-                    <input type="text" name="search" placeholder="Equipe, joueur..." class="search-input" id="search">
+                    <label for="search" class="search-label">Recherche</label>
+                    <input type="text" name="search" placeholder="Equipe, joueur..." id="search" class="search-input">
                 </div>
             </form>
         </div>
         <hr>
-        <div id="matches">
+        <div class="matches">
+            <div class="match"></div>
             <div class="match"></div>
             <div class="match"></div>
             <div class="match"></div>

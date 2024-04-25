@@ -1,14 +1,19 @@
 <nav id="navigation">
-    <div class="left">
+    <div class="nav-icon">
         <img src="<?= base_url("/assets/images/logo.png") ?>" alt="">
     </div>
-    <div class="center">
-        <a href="">Accueil</a>
-        <a href="">Recherche</a>
-        <a href="">Contact</a>
+    <div class="nav-menu">
+        <ul>
+            <li><a href="">Accueil</a></li>
+            <li><a href="">Recherche</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
     </div>
-    <div class="right">
-        <a class="login" href="">Connexion</a>
-        <a class="register" href="">Inscription</a>
+    <div class="nav-action">
+        <div class="auth">
+            <a class="login" href="">Connexion</a>
+            <a class="register" href="">Inscription</a>
+        </div>
+        <button class="menu-icon"><img src="/assets/images/menu.png" alt=""></button>
     </div>
 </nav>
