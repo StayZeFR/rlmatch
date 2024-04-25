@@ -1,5 +1,6 @@
 #content {
-    width: 50%;
+    width: 1000px;
+    min-width: 500px;
     height: 500px;
     background-color: #333;
     box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
@@ -9,4 +10,74 @@
     padding: 10px;
     top: 300px;
     border-radius: 5px;
+    opacity: 0.85;
 }
+
+#content > #search > form {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+#content > #search > form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 300px;
+}
+
+#content > #search > form > div > label {
+    font-size: 13px;
+    color: #999999;
+}
+
+#content > #search > form > div > .search-input:focus {
+    outline: none;
+}
+
+#content > #search > form > div > .search-input {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    padding: 0 5px;
+    background-color: #404040;
+    color: #999999;
+}
+
+#content > #search > form > div > select {
+    width: 100%;
+    min-width: 100px;
+
+}
+
+#content > #search > form > div > .search-input[type="text"] {
+    width: calc(100% - 10px);
+    height: 28px;
+}
+
+#content > #search > form > div > .search-input[type="text"]::placeholder {
+    color: #999999;
+}
+#content > #matches {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Adjust as needed */
+    align-items: flex-start;
+    gap: 10px;
+}
+
+#content > #matches > .match {
+    width: 200px; /* Adjust width as needed */
+    height: 100px;
+    background-color: #404040;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 10px; /* Adjust margin as needed */
+}
+
+
