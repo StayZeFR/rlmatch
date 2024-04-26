@@ -12,8 +12,16 @@ function setCurrentPage(page, nbPages, matches) {
     for (let i = start; i < end; i++) {
         let match = matches[i];
         if (match !== undefined) {
-            console.log(i);
-            matchesContainer.append("<div class='match'>" + i + "</div>");
+            let hours = match.date.split(" ")[1];
+            matchesContainer.append("<div class='match'>" +
+                "<div class='match-banner'>" +
+                "<div class='match-hours'>" + hours + "</div>" +
+                "</div>" +
+                "<div class='match-infos'>" +
+                "<div class='match-title'><i><span class='match-team-1'>" + match.team1 + "</span></i> <b>VS</b> <i><span class='match-team-2'>" + match.team2 + "</span></i></div>" +
+                "<div class='match-token'><span class='token'>" + match.token + "</span><img src='/assets/images/token.png' alt=''></div>" +
+                "</div>" +
+                "</div>");
         }
     }
 }
@@ -21,38 +29,21 @@ function setCurrentPage(page, nbPages, matches) {
 $(document).ready(function() {
 
     const matches = [
-        { "id": 1, "name": "Team 1", "score": 0 },
-        { "id": 2, "name": "Team 2", "score": 0 },
-        { "id": 3, "name": "Team 3", "score": 0 },
-        { "id": 4, "name": "Team 4", "score": 0 },
-        { "id": 5, "name": "Team 5", "score": 0 },
-        { "id": 6, "name": "Team 6", "score": 0 },
-        { "id": 7, "name": "Team 7", "score": 0 },
-        { "id": 8, "name": "Team 8", "score": 0 },
-        { "id": 9, "name": "Team 9", "score": 0 },
-        { "id": 10, "name": "Team 10", "score": 0 },
-        { "id": 11, "name": "Team 11", "score": 0 },
-        { "id": 12, "name": "Team 12", "score": 0 },
-        { "id": 13, "name": "Team 13", "score": 0 },
-        { "id": 14, "name": "Team 14", "score": 0 },
-        { "id": 15, "name": "Team 15", "score": 0 },
-        { "id": 16, "name": "Team 16", "score": 0 },
-        { "id": 17, "name": "Team 17", "score": 0 },
-        { "id": 18, "name": "Team 18", "score": 0 },
-        { "id": 19, "name": "Team 19", "score": 0 },
-        { "id": 20, "name": "Team 20", "score": 0 },
-        { "id": 21, "name": "Team 21", "score": 0 },
-        { "id": 22, "name": "Team 22", "score": 0 },
-        { "id": 23, "name": "Team 23", "score": 0 },
-        { "id": 24, "name": "Team 24", "score": 0 },
-        { "id": 25, "name": "Team 25", "score": 0 },
-        { "id": 26, "name": "Team 26", "score": 0 },
-        { "id": 27, "name": "Team 27", "score": 0 },
-        { "id": 28, "name": "Team 28", "score": 0 },
-        { "id": 29, "name": "Team 29", "score": 0 },
-        { "id": 30, "name": "Team 30", "score": 0 },
-        { "id": 31, "name": "Team 31", "score": 0 },
-        { "id": 32, "name": "Team 32", "score": 0 }
+        { "id": 1, "team1": "RED", "team2" : "BLUE", "token": 500, "date" : "2021-01-01 20:55:11" },
+        { "id": 2, "team1": "RED", "team2" : "BLUE", "token": 115, "date" : "2021-01-01 20:56:12" },
+        { "id": 3, "team1": "RED", "team2" : "BLUE", "token": 100, "date" : "2021-01-01 20:57:13" },
+        { "id": 4, "team1": "RED", "team2" : "BLUE", "token": 200, "date" : "2021-01-01 20:58:14" },
+        { "id": 5, "team1": "RED", "team2" : "BLUE", "token": 300, "date" : "2021-01-01 20:59:15" },
+        { "id": 6, "team1": "RED", "team2" : "BLUE", "token": 400, "date" : "2021-01-01 21:00:16" },
+        { "id": 7, "team1": "RED", "team2" : "BLUE", "token": 500, "date" : "2021-01-01 21:01:17" },
+        { "id": 8, "team1": "RED", "team2" : "BLUE", "token": 600, "date" : "2021-01-01 21:02:18" },
+        { "id": 9, "team1": "RED", "team2" : "BLUE", "token": 700, "date" : "2021-01-01 21:03:19" },
+        { "id": 10, "team1": "RED", "team2" : "BLUE", "token": 800, "date" : "2021-01-01 21:04:20" },
+        { "id": 11, "team1": "RED", "team2" : "BLUE", "token": 900, "date" : "2021-01-01 21:05:21" },
+        { "id": 12, "team1": "RED", "team2" : "BLUE", "token": 1000, "date" : "2021-01-01 21:06:22" },
+        { "id": 13, "team1": "RED", "team2" : "BLUE", "token": 1100, "date" : "2021-01-01 21:07:23" },
+        { "id": 14, "team1": "RED", "team2" : "BLUE", "token": 1200, "date" : "2021-01-01 21:08:24" },
+        { "id": 15, "team1": "RED", "team2" : "BLUE", "token": 1300, "date" : "2021-01-01 21:09:25" },
     ];
 
     const paginationContainer = $("#content > .footer > .paging > span").first();
