@@ -2,6 +2,7 @@
 
 <?= $this->section("assets") ?>
     <link rel="stylesheet" href="<?= base_url("/assets/css/home.css") ?>">
+    <script src="<?= base_url("/assets/js/home.js") ?>"></script>
 <?= $this->endSection() ?>
 
 <?= $this->section("main") ?>
@@ -25,6 +26,7 @@
         </div>
         <hr>
         <div class="matches">
+            <!--<div class="match"></div>
             <div class="match"></div>
             <div class="match"></div>
             <div class="match"></div>
@@ -34,6 +36,11 @@
             <div class="match"></div>
             <div class="match"></div>
             <div class="match"></div>
+            <div class="match"></div>
+            <div class="match"></div>-->
+        </div>
+        <div class="footer">
+            <div class="paging"><button class="previous"><img src="/assets/images/previous.png" alt=""></button><span>1 / N</span><button class="next"><img src="/assets/images/next.png" alt=""></button></div>
         </div>
     </div>
 <?= $this->endSection() ?>

@@ -72,6 +72,44 @@
     background-color: #404040;
     border-radius: 5px;
     padding: 10px;
+    opacity: 1;
+}
+
+#content > .footer {
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    padding: 10px;
+}
+
+#content > .footer > .paging {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#content > .footer > .paging > span {
+    font-size: 15px;
+    color: #999999;
+    display: flex;
+    align-items: center;
+}
+
+#content > .footer > .paging > button:focus {
+    outline: none;
+}
+
+#content > .footer > .paging > button {
+    height: 25px;
+    width: 25px;
+    background: transparent;
+    border: none;
+}
+
+#content > .footer > .paging > button > img {
+    height: 100%;
+    width: auto;
 }
 
 @media screen and (max-width: 800px) {
