@@ -1,0 +1,154 @@
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("../../../assets/images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+#container {
+    width: 350px;
+    height: auto;
+    background-color: #333;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    border-radius: 5px;
+    opacity: 0.85;
+}
+
+#container > h1 {
+    text-align: center;
+    color: #999999;
+    margin: 0;
+}
+
+#container > form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#container > form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#container > form > div > label {
+    font-size: 13px;
+    color: #999999;
+}
+
+#container > form > div > input:focus {
+    outline: none;
+}
+
+#container > form > div > input {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    padding: 5px 10px;
+    background-color: #404040;
+    color: #999999;
+}
+
+#container > form > button {
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    padding: 5px 10px;
+    background-color: #ED7F10;
+    color: white;
+    cursor: pointer;
+}
+
+#container > form > button:hover {
+    background-color: #FFA500;
+}
+
+.separation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.separation > .separator-line {
+    flex: 1;
+    height: 1px;
+    background-color: #999999;
+}
+
+.separation > .separator-text {
+    margin: 0 10px;
+    color: #999999;
+}
+
+#container > .social {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+#container > .social > a {
+    width: 100%;
+    height: 50px;
+    color: #999999;
+    text-decoration: none;
+    background-color: black;
+    position: relative;
+    border-radius: 5px;
+}
+
+#container > .social > a:hover {
+    background-color: #0c0c0c;
+}
+
+#container > .social > a > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+#container > .social > a > div > img {
+    width: 20px;
+    height: 20px;
+}
+
+#container > .return {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    padding: 5px;
+    text-decoration: none;
+}
+
+#container > .return:hover {
+    scale: 1.05;
+}
+
+#container > .return > img {
+    width: 20px;
+    height: 20px;
+}
+
+#container > .return > div {
+    color: #999999;
+}
+
+

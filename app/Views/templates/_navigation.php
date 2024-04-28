@@ -11,7 +11,7 @@
     </div>
     <div class="nav-action">
         <div class="auth">
-            <a class="login" href="">Connexion</a>
+            <a class="login" href="<?= url_to("login") ?>">Connexion</a>
             <a class="register" href="">Inscription</a>
         </div>
         <button class="menu-icon"><img src="/assets/images/menu.png" alt=""></button>
