@@ -9,6 +9,3 @@ class PrivacyPolicy extends BaseController
         return view("pages/privacy_policy");
     }
 }
-{
-
-}
