@@ -10,7 +10,7 @@
     transform: translateX(-50%);
     box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
     display: grid;
-    grid-template-columns: 10px 80px auto 250px 10px;
+    grid-template-columns: 10px 80px auto 300px 10px;
     border-radius: 0 0 5px 5px;
     opacity: 0.7;
 }
@@ -73,6 +73,24 @@
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    padding: 5px 10px;
+    background-color: white;
+}
+
+#navigation> .nav-action > .auth:hover {
+    cursor: pointer;
+    scale: 1.005;
+}
+
+#navigation> .nav-action > .auth > div {
+    white-space: nowrap;
+    color: black;
+}
+
+#navigation> .nav-action > .auth > img {
+    height: 30px;
+    width: auto;
+    filter: invert(100%);
 }
 
 #navigation> .nav-action > .auth > a {
