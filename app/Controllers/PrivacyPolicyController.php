@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class PrivacyPolicy extends BaseController
+class PrivacyPolicyController extends BaseController
 {
     public function view(): string
     {
