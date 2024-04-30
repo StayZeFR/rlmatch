@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RLMatch</title>
-    <link rel="stylesheet" href="/assets/css/auth/login.css">
+    <link rel="stylesheet" href="<?= base_url("/assets/css/auth/login.css") ?>">
 </head>
 <body>
     <div id="container">
@@ -26,14 +26,6 @@
             </div>
             <button type="submit">Se connecter</button>
         </form>
-        <div class="separation">
-            <div class="separator-line"></div>
-            <div class="separator-text">OU</div>
-            <div class="separator-line"></div>
-        </div>
-        <div class="social">
-            <a href=""><div><img src="<?= base_url("/assets/images/epicgames.png") ?>" alt=""><div>Epic games</div></div></a>
-        </div>
     </div>
 </body>
 </html>
