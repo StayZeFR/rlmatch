@@ -6,9 +6,9 @@ use MrPropre\OAuth2\Client\Provider\EpicGames;
 function getUrl(): string
 {
     $provider = new EpicGames([
-        "clientId"          => "xyza78917i5nSZrRkoiZ8GPNyV9HHUqe",
-        "clientSecret"      => "WqBYErrNvzyLKSRor8khIMPCMamVV9AU5kXDUpviQv8",
-        "redirectUri"       => url_to("callback"),
+        "clientId" => $_ENV["epicgames.client_id"],
+        "clientSecret" => $_ENV["epicgames.client_secret"],
+        "redirectUri" => url_to("callback"),
     ], [
         "optionProvider" => new HttpBasicAuthOptionProvider()
     ]);
