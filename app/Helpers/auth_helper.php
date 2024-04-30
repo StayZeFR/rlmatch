@@ -1,12 +1,17 @@
 <?php
 
+use League\OAuth2\Client\OptionProvider\HttpBasicAuthOptionProvider;
 use MrPropre\OAuth2\Client\Provider\EpicGames;
 
-function getUrlEpicGames()
+function getUrl(): string
 {
     $provider = new EpicGames([
-        "clientId"          => "xyza7891D2NJpFKT5J3WFcQpZGZy4Ihr",
-        "clientSecret"      => "cDQ0kRlQiWGycCCLojkfysgq5JyVYpFFiXScs3fC0Lg",
-        "redirectUri"       => "your_redirect_uri",
+        "clientId"          => "xyza78917i5nSZrRkoiZ8GPNyV9HHUqe",
+        "clientSecret"      => "WqBYErrNvzyLKSRor8khIMPCMamVV9AU5kXDUpviQv8",
+        "redirectUri"       => url_to("callback"),
+    ], [
+        "optionProvider" => new HttpBasicAuthOptionProvider()
     ]);
+
+    return $provider->getAuthorizationUrl();
 }
