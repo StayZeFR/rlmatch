@@ -34,7 +34,7 @@ class AuthModel
 
         $options = [
             "state" => $provider->getState(),
-            "scope" => ["basic_profile"]
+            "scope" => ["openid", "profile", "email", "offline_access"],
         ];
 
 

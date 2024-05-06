@@ -10,12 +10,33 @@
         </ul>
     </div>
     <div class="nav-action">
-        <div class="auth">
-            <!--<a class="login" href="<?= url_to("login") ?>">Connexion</a>
-            <a class="register" href="">Inscription</a>-->
-            <img src="<?= base_url("/assets/images/epicgames.png") ?>" alt="">
-            <div>Se connecter avec Epic Games</div>
-        </div>
+        <?php if (!session()->has("user")) { ?>
+            <div class="auth">
+                <img src="<?= base_url("/assets/images/epicgames.png") ?>" alt="">
+                <div>Se connecter avec Epic Games</div>
+            </div>
+        <?php } else { ?>
+            <div class="profile">
+                <div class="token">
+                    <span>1000</span>
+                    <img src="<?= base_url("/assets/images/token.png") ?>" alt="">
+                </div>
+                <div class="picture">
+                    <img src="<?= base_url("/assets/images/user.png") ?>" alt="">
+                    <div class="dropdown-navigation">
+                        <div>
+                            <h3><?= session()->get("user")->getUsername() ?></h3>
+                            <hr>
+                            <ul>
+                                <li><a href="">Mon compte</a></li>
+                                <li><a href="">Mes parties</a></li>
+                                <li><a href="">Déconnexion</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
         <button class="menu-icon"><img src="/assets/images/menu.png" alt=""></button>
     </div>
 </nav>

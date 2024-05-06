@@ -6,7 +6,7 @@ use CodeIgniter\Controller;
 
 class PlayController extends Controller
 {
-    public function view()
+    public function view(): string
     {
         return view("pages/play");
     }

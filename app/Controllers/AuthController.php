@@ -18,11 +18,11 @@ class AuthController extends BaseController
         if ($state !== session()->get("state")) {
             echo "<script>alert('Invalid state');</script>";
         } else if ($code) {
-            $token = AuthModel::getToken($this->request->getGet("code"));
-            //$user = AuthModel::getUser($token);
+            $token = AuthModel::getToken($code);
+            $user = AuthModel::getUser($token);
 
-            //session()->set("token", $token);
-            //session()->set("user", $user);
+            session()->set("token", $token);
+            session()->set("user", $user);
         }
 
         echo "<script>setTimeout(window.close, 500);</script>";
