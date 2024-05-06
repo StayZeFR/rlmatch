@@ -28,9 +28,9 @@
                             <h3><?= session()->get("user")->getUsername() ?></h3>
                             <hr>
                             <ul>
-                                <li><a href="">Mon compte</a></li>
+                                <li><a href="<?= url_to("account") ?>">Mon compte</a></li>
                                 <li><a href="">Mes parties</a></li>
-                                <li><a href="">Déconnexion</a></li>
+                                <li><a href="<?= url_to("logout") ?>">Déconnexion</a></li>
                             </ul>
                         </div>
                     </div>

@@ -1,0 +1,62 @@
+#content > .title {
+    font-size: 1.75em;
+    color: white;
+    padding: 0 10px;
+}
+
+#content > .container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#content > .container > .card {
+    background-color: #404040;
+    width: calc(100% - 20px);
+    min-height: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    opacity: 1;
+}
+
+#content > .container > .card > .title {
+    font-size: 1.1em;
+    color: white;
+}
+
+#content > .container > .card.password > .content {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+#content > .container > .card.password > .content > input {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background-color: #333;
+    color: white;
+}
+
+#content > .container > .card.password > .content > input:focus {
+    outline: none;
+}
+
+#content > .container > .card.password > .content > input[type="button"] {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#content > .container > .card.password > .content > input[type="button"]:hover {
+    background-color: #555;
+}

@@ -3,7 +3,7 @@
 use App\Models\AuthModel;
 
 $url = "";
-if (!session()->has("user") && !session()->has("token") || true) {
+if (!session()->has("user") && !session()->has("token")) {
     $url = AuthModel::getUrl();
     session()->set("state", AuthModel::getState());
 }

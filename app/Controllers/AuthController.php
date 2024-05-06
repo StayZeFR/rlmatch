@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\AuthModel;
+use CodeIgniter\HTTP\RedirectResponse;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 
 class AuthController extends BaseController
@@ -25,7 +26,16 @@ class AuthController extends BaseController
             session()->set("user", $user);
         }
 
+        echo "<script>window.opener.location.reload();</script>";
         echo "<script>setTimeout(window.close, 500);</script>";
+    }
 
+    public function logout(): RedirectResponse
+    {
+        session()->remove("token");
+        session()->remove("user");
+        session()->remove("state");
+
+        return redirect()->to(url_to("home"));
     }
 }
