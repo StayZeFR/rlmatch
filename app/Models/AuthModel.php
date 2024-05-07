@@ -37,7 +37,6 @@ class AuthModel
             "scope" => ["openid", "profile", "email", "offline_access"],
         ];
 
-
         return $provider->getAuthorizationUrl($options);
     }
 

@@ -17,7 +17,7 @@
             </div>
         <?php } else { ?>
             <div class="profile">
-                <a href="<?= base_url("token") ?>" class="token">
+                <a href="<?= url_to("account.token") ?>" class="token">
                     <span>1000</span>
                     <img src="<?= base_url("/assets/images/token.png") ?>" alt="">
                 </a>
@@ -28,8 +28,8 @@
                             <h3><?= session()->get("user")->getUsername() ?></h3>
                             <hr>
                             <ul>
-                                <li><a href="<?= url_to("account") ?>">Mon compte</a></li>
-                                <li><a href="">Mes parties</a></li>
+                                <li><a href="<?= url_to("account.account") ?>">Mon compte</a></li>
+                                <li><a href="<?= url_to("account.games") ?>">Mes parties</a></li>
                                 <li><a href="<?= url_to("logout") ?>">Déconnexion</a></li>
                             </ul>
                         </div>
