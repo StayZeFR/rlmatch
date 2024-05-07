@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Exception;
+use GuzzleHttp\Client;
 use League\OAuth2\Client\OptionProvider\HttpBasicAuthOptionProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
