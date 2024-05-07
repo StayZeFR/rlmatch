@@ -11,22 +11,20 @@
     </div>
     <hr>
     <div class="container">
-        <div class="card password">
+        <div class="card avatar">
             <div class="title">
-                Mot de passe
+                Avatar
+            </div>
+            <input type="button" class="btn" value="Changer">
+        </div>
+        <div class="card email">
+            <div class="title">
+                Email
             </div>
             <div class="content">
-                <input type="password" placeholder="Mot de passe actuel">
-                <input type="password" placeholder="Nouveau mot de passe">
-                <input type="password" placeholder="Confirmer le mot de passe">
-                <input type="button" value="Modifier">
+                <input type="email" placeholder="Email">
+                <input type="button" class="btn" value="Changer">
             </div>
-        </div>
-        <div class="card">
-
-        </div>
-        <div class="card">
-
         </div>
     </div>
 </div>

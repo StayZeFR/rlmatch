@@ -128,6 +128,8 @@
 
 #navigation > .nav-action > .profile > .token > span {
     align-content: center;
+    text-decoration: none;
+    color: white;
 }
 
 #navigation > .nav-action > .profile > .token {
@@ -135,6 +137,12 @@
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    text-decoration: none;
+}
+
+#navigation > .nav-action > .profile > .token:hover {
+    cursor: pointer;
+    scale: 1.05;
 }
 
 #navigation > .nav-action > .profile {

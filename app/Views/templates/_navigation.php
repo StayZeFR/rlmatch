@@ -17,10 +17,10 @@
             </div>
         <?php } else { ?>
             <div class="profile">
-                <div class="token">
+                <a href="<?= base_url("token") ?>" class="token">
                     <span>1000</span>
                     <img src="<?= base_url("/assets/images/token.png") ?>" alt="">
-                </div>
+                </a>
                 <div class="picture">
                     <img src="<?= base_url("/assets/images/user.png") ?>" alt="">
                     <div class="dropdown-navigation">

@@ -8,6 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get("/", "HomeController::view", ["as" => "home"]);
 $routes->get("/play", "PlayController::view", ["as" => "play"]);
 $routes->get("/account", "AccountController::view", ["as" => "account"]);
+$routes->get("/token", "TokenController::view", ["as" => "token"]);
 
 $routes->get("/privacy-policy", "PrivacyPolicyController::view", ["as" => "privacy-policy"]);
 
