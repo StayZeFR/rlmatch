@@ -17,10 +17,13 @@ if (!session()->has("user") && !session()->has("token")) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RLMatch</title>
     <script src="<?= base_url("/assets/libs/jquery.min.js") ?>"></script>
+    <script src="<?= base_url("/assets/libs/sweetalert/sweetalert2.all.min.js") ?>"></script>
     <script src="<?= base_url("/assets/js/global.js") ?>"></script>
+    <script src="<?= base_url("/assets/js/navigation.js") ?>"></script>
     <script src="<?= base_url("/assets/js/auth.js") ?>"></script>
     <link rel="stylesheet" href="<?= base_url("/assets/css/navigation.css") ?>">
     <link rel="stylesheet" href="<?= base_url("/assets/css/style.css") ?>">
+    <link rel="stylesheet" href="<?= base_url("/assets/libs/sweetalert/sweetalert2.min.css") ?>">
     <?= $this->renderSection("assets") ?>
     <script>
         const URL_AUTH = "<?= $url ?>";

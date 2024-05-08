@@ -1,28 +1,35 @@
 CREATE TABLE IF NOT EXISTS player (
-    id VARCHAR(255) PRIMARY KEY,
-    email VARCHAR(255),
-    token INT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id SERIAL PRIMARY KEY,
+    uuid VARCHAR(32) NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) DEFAULT NULL,
+    token INT DEFAULT 0,
+    win INT DEFAULT 0,
+    lose INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (uuid)
 );
 
 CREATE TABLE IF NOT EXISTS friend (
-    player_id VARCHAR(255),
-    friend_id VARCHAR(255),
+    player_id INT,
+    friend_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (player_id, friend_id)
+    PRIMARY KEY (player_id, friend_id),
+    FOREIGN KEY (player_id) REFERENCES player(id),
+    FOREIGN KEY (friend_id) REFERENCES player(id)
 );
 
 CREATE TABLE IF NOT EXISTS team (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50),
-    created_by VARCHAR(255),
+    created_by int,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (created_by) REFERENCES player(id)
 );
 
 CREATE TABLE IF NOT EXISTS team_member (
     team_id INT,
-    player_id VARCHAR(255),
+    player_id int,
     PRIMARY KEY (team_id, player_id),
     FOREIGN KEY (team_id) REFERENCES team(id),
     FOREIGN KEY (player_id) REFERENCES player(id)
@@ -37,14 +44,16 @@ CREATE TABLE IF NOT EXISTS bo (
     team1_id INT,
     team2_id INT,
     winner INT,
+    created_by int,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (created_by) REFERENCES player(id),
     FOREIGN KEY (team1_id) REFERENCES team(id),
     FOREIGN KEY (team2_id) REFERENCES team(id),
     FOREIGN KEY (winner) REFERENCES team(id)
 );
 
-CREATE TABLE IF NOT EXISTS bo_match (
-    match_id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS match (
+    id SERIAL PRIMARY KEY,
     bo_id INT,
     winner INT,
     score_team1 INT,
@@ -55,25 +64,25 @@ CREATE TABLE IF NOT EXISTS bo_match (
 );
 
 CREATE TABLE IF NOT EXISTS notification (
-    id VARCHAR(255) PRIMARY KEY,
-    send_by VARCHAR(255),
-    recieve_by VARCHAR(255),
+    id SERIAL PRIMARY KEY,
+    send_by int,
+    receive_by int,
     message TEXT,
     send_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     response_at TIMESTAMP,
     response INT,
-    expire_at TIMESTAMP,
+    expired_at TIMESTAMP,
     FOREIGN KEY (send_by) REFERENCES player(id),
-    FOREIGN KEY (recieve_by) REFERENCES player(id)
+    FOREIGN KEY (receive_by) REFERENCES player(id)
 );
 
 CREATE TABLE IF NOT EXISTS notification_friend (
-    notification_id VARCHAR(255),
+    notification_id INT,
     FOREIGN KEY (notification_id) REFERENCES notification(id)
 );
 
 CREATE TABLE IF NOT EXISTS notification_match (
-    notification_id VARCHAR(255),
+    notification_id INT,
     bo_id INT,
     FOREIGN KEY (notification_id) REFERENCES notification(id),
     FOREIGN KEY (bo_id) REFERENCES bo(id)
