@@ -102,7 +102,7 @@ $(document).ready(function() {
             let result = request("/api/friends/add", "POST", {
                 username: value
             });
-            console.log(JSON.stringify(result))
+
             if (result["code"] === 200) {
                 toast("Succès", "Demande d'amie envoyée", "success");
             } else if (result["code"] === 400) {
@@ -113,4 +113,41 @@ $(document).ready(function() {
         }
     });
 
+    getNotificationFriend();
+
+    setInterval(() => {
+        getNotificationFriend();
+    }, 60000);
 });
+
+function getNotificationFriend() {
+    const notificationsContainer = $("#notification > .notification-content > .notification-list");
+    let result = request("/api/notifications/friends", "POST");
+
+    if (result["code"] === 200) {
+        notificationsContainer.empty();
+        result["data"].forEach(notification => {
+            setNotificationFriend("", notification["send_by"]);
+        });
+    }
+}
+
+function setNotificationFriend(avatar, username) {
+    const notificationsContainer = $("#notification > .notification-content > .notification-list");
+    let html = "<div class='notification-item'>" +
+                    "    <img src='/assets/images/user.png' alt=''>" +
+                    "    <div class='content'>" +
+                    "        <h4>" + username + "</h4>" +
+                    "        <p>Vous a ajouté en ami</p>" +
+                    "    </div>\n" +
+                    "    <div class='action'>" +
+                    "        <button class='valid'>" +
+                    "            <img src='/assets/images/valid.png' alt=''>" +
+                    "        </button>" +
+                    "        <button class='decline'>" +
+                    "            <img src='/assets/images/close.png' alt=''>" +
+                    "        </button>" +
+                    "    </div>" +
+                    "</div>";
+    notificationsContainer.append(html);
+}

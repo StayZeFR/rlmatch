@@ -21,6 +21,9 @@ $routes->group("api", function ($routes) {
     $routes->group("friends", function ($routes) {
         $routes->post("add", "API\FriendsController::add", ["as" => "api.friends.add"]);
     });
+    $routes->group("notifications", function ($routes) {
+        $routes->post("friends", "API\NotificationsController::getNotificationsFriends", ["as" => "api.notifications.friends"]);
+    });
 });
 
 $routes->get("/callback", "AuthController::callback", ["as" => "callback"]);

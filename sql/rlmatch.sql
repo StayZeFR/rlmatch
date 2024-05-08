@@ -87,3 +87,16 @@ CREATE TABLE IF NOT EXISTS notification_match (
     FOREIGN KEY (notification_id) REFERENCES notification(id),
     FOREIGN KEY (bo_id) REFERENCES bo(id)
 );
+
+CREATE FUNCTION getUsername(player INT)
+    RETURNS VARCHAR(50) AS
+    $body$
+DECLARE username VARCHAR(50);
+BEGIN
+    SELECT p.username INTO username
+    FROM player p WHERE p.id = player;
+
+    RETURN username;
+END
+$body$
+LANGUAGE plpgsql;
