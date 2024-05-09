@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    const authBtn = $("#navigation > .nav-action > .auth");
+    const authBtn = $(".auth");
     const authWindow = authBtn.on("click", function () {
         window.open(
             URL_AUTH,

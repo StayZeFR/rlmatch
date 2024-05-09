@@ -14,12 +14,12 @@ class NotificationModel extends Model
     /**
      * @throws ReflectionException
      */
-    public function addNotification(int $sendBy, int $receiveBy, string $message): int
+    public function sendNotification(int $sendBy, int $receiveBy): int
     {
         $data = [
             "send_by" => $sendBy,
             "receive_by" => $receiveBy,
-            "message" => $message,
+            "message" => "",
             "send_at" => date("Y-m-d H:i:s"),
             "expired_at" => date("Y-m-d H:i:s", strtotime("+1 week"))
         ];

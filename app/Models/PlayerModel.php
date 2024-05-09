@@ -39,4 +39,21 @@ class PlayerModel extends Model
 
         return $this->insert($data);
     }
+
+    public function getPlayers(bool $friend = true): array
+    {
+        $players = $this->findAll();
+        return array_map(function ($player) use ($friend) {
+            if ($friend) {
+                $player["friend"] = $this->isFriend($player["id"]);
+            }
+            return $player;
+        }, $players);
+    }
+
+    private function isFriend(int $id): bool
+    {
+        $model = new FriendModel();
+        return $model->isFriend(session()->get("player")["id"], $id);
+    }
 }

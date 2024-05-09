@@ -1,3 +1,123 @@
+#menu {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 10px;
+    background-color: #252525;
+    display: none;
+}
+
+#menu > .menu-content {
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: #252525;
+}
+
+#menu > .menu-content > .menu-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid white;
+    padding: 20px 0;
+}
+
+#menu > .menu-content > .menu-header > .close-menu:hover {
+    scale: 1.05;
+    cursor: pointer;
+}
+
+#menu > .menu-content > .menu-header > h3 {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 1.5em;
+}
+
+#menu > .menu-content > .menu-header > button {
+    height: 30px;
+    width: auto;
+    background: transparent;
+    border: none;
+}
+
+#menu > .menu-content > .menu-header > button > img {
+    height: 100%;
+    width: auto;
+}
+
+#menu > .menu-content > .auth {
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    background-color: white;
+}
+
+#menu > .menu-content > .auth:hover {
+    cursor: pointer;
+    scale: 1.005;
+}
+
+#menu > .menu-content > .auth > img {
+    height: 30px;
+    width: auto;
+    filter: invert(100%);
+}
+
+#menu > .menu-content > .auth > div {
+    white-space: nowrap;
+    color: black;
+}
+
+#menu > .menu-content > .menu-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#menu > .menu-content > .menu-list > ul {
+    padding: 0;
+    margin: 0;
+}
+
+#menu > .menu-content > .menu-list > ul > li {
+    list-style: none;
+    padding: 20px 20px;
+    background-color: #404040;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+#menu > .menu-content > .menu-list > ul > li > a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+#menu > .menu-content > .menu-list > ul > li > a > img {
+    height: 30px;
+    width: auto;
+}
+
+#menu > .menu-content > .menu-list > ul > li > a > span {
+    color: white;
+    text-decoration: none;
+}
+
 #navigation {
     background-color: #333;
     color: white;
@@ -239,6 +359,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    position: relative;
 }
 
 #navigation > .nav-action > .profile > .notification:hover {
@@ -249,6 +370,22 @@
 #navigation > .nav-action > .profile > .notification > img {
     height: 33px;
     width: auto;
+}
+
+#navigation > .nav-action > .profile > .notification > .pellet {
+    height: 7px;
+    width: 7px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    background-color: #ED7F10;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 0.8em;
+    display: none;
+    justify-content: center;
+    align-items: center;
 }
 
 #notification {

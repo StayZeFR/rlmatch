@@ -1,5 +1,35 @@
 $(document).ready(function() {
 
+    const menuOpen = $("#navigation > .nav-action > .menu");
+    const menuClose = $("#menu > .menu-content > .menu-header > .close-menu");
+    const menuContainer = $("#menu");
+
+    menuOpen.on("click", function() {
+        openMenu();
+    });
+
+    menuClose.on("click", function() {
+        closeMenu();
+    });
+
+    function openMenu() {
+        menuContainer.show();
+        menuContainer.css("transform", "translateX(100%)");
+        menuContainer.css("transition", "transform 0.5s");
+        setTimeout(() => {
+            menuContainer.css("transform", "translateX(0)");
+        }, 100);
+    }
+
+    function closeMenu() {
+        menuContainer.css("transform", "translateX(-100%)");
+        menuContainer.css("transition", "transform 0.5s");
+        setTimeout(() => {
+            menuContainer.hide();
+            menuContainer.css("transform", "translateX(0)");
+        }, 500);
+    }
+
     const notificationOpen = $("#navigation > .nav-action > .profile > .notification");
     const notificationContainer = $("#notification");
     const notificationContent = $("#notification > .notification-content");
@@ -99,55 +129,116 @@ $(document).ready(function() {
     friendAddButton.on("click", function() {
         const value = friendAddInput.val().trim();
         if (value.length > 0) {
-            let result = request("/api/friends/add", "POST", {
+            friendAddInput.val("");
+            let result = request("/api/notifications/friends/send", "POST", {
                 username: value
-            });
-
-            if (result["code"] === 200) {
-                toast("Succès", "Demande d'amie envoyée", "success");
-            } else if (result["code"] === 400) {
-                toast("Erreur", result["data"]["message"], "error");
-            } else {
-                toast("Erreur", "Une erreur est survenue", "error");
-            }
+            }, true);
         }
     });
 
-    getNotificationFriend();
+    getNotificationsFriends();
+    getFriends();
 
     setInterval(() => {
-        getNotificationFriend();
+        getNotificationsFriends();
+        getFriends();
     }, 60000);
 });
 
-function getNotificationFriend() {
+function getNotificationsFriends() {
     const notificationsContainer = $("#notification > .notification-content > .notification-list");
     let result = request("/api/notifications/friends", "POST");
 
     if (result["code"] === 200) {
         notificationsContainer.empty();
         result["data"].forEach(notification => {
-            setNotificationFriend("", notification["send_by"]);
+            setNotificationFriend(notification["id"], "", notification["send_by"]);
         });
+        setEventFriend();
+        if (result["data"].length > 0) {
+            $("#navigation > .nav-action > .profile > .notification > .pellet > span").text(result["data"].length);
+            $("#navigation > .nav-action > .profile > .notification > .pellet").css("display", "flex");
+        } else {
+            $("#navigation > .nav-action > .profile > .notification > .pellet").hide();
+        }
     }
 }
 
-function setNotificationFriend(avatar, username) {
+function setNotificationFriend(id, avatar, username) {
     const notificationsContainer = $("#notification > .notification-content > .notification-list");
     let html = "<div class='notification-item'>" +
                     "    <img src='/assets/images/user.png' alt=''>" +
                     "    <div class='content'>" +
                     "        <h4>" + username + "</h4>" +
                     "        <p>Vous a ajouté en ami</p>" +
-                    "    </div>\n" +
+                    "    </div>" +
                     "    <div class='action'>" +
-                    "        <button class='valid'>" +
+                    "        <button class='accept'>" +
                     "            <img src='/assets/images/valid.png' alt=''>" +
                     "        </button>" +
                     "        <button class='decline'>" +
                     "            <img src='/assets/images/close.png' alt=''>" +
                     "        </button>" +
+                    "        <input type='hidden' value='" + id + "'>" +
                     "    </div>" +
                     "</div>";
     notificationsContainer.append(html);
+}
+
+function setEventFriend() {
+    const notificationItemValid = $("#notification > .notification-content > .notification-list > .notification-item > .action > .accept");
+    const notificationItemDecline = $("#notification > .notification-content > .notification-list > .notification-item > .action > .decline");
+
+    notificationItemValid.on("click", function() {
+        const id = $(this).parent().find("input").val();
+        if (acceptNotificationFriend(id)) {
+            $(this).parent().parent().remove();
+        }
+    });
+
+    notificationItemDecline.on("click", function() {
+        const id = $(this).parent().find("input").val();
+        if (declineNotificationFriend(id)) {
+            $(this).parent().parent().remove();
+        }
+    });
+}
+
+function acceptNotificationFriend(id) {
+    let result = request("/api/notifications/friends/accept", "POST", {
+        notification_id: id
+    }, true);
+    getFriends();
+    getNotificationsFriends();
+    return result["code"] === 200;
+}
+
+function declineNotificationFriend(id) {
+    let result = request("/api/notifications/friends/decline", "POST", {
+        notification_id: id
+    }, true);
+    getFriends();
+    getNotificationsFriends();
+    return result["code"] === 200;
+}
+
+function getFriends() {
+    const friendsContainer = $("#friend > .friend-content > .friend-list");
+    let result = request("/api/friends", "POST");
+
+    if (result["code"] === 200) {
+        friendsContainer.empty();
+        result["data"].forEach(friend => {
+            setFriend(friend["id"], friend["username"], friend["avatar"]);
+        });
+    }
+}
+
+function setFriend(id, username, avatar) {
+    const friendsContainer = $("#friend > .friend-content > .friend-list");
+    let html = "<div class='friend-item'>" +
+                    "    <img src='/assets/images/user.png' alt=''>" +
+                    "    <div class='content'><h4>" + username + "</h4></div>" +
+                    "</div>";
+    friendsContainer.append(html);
 }

@@ -1,4 +1,15 @@
-function request(url, method, data) {
+function toast(title, type) {
+    Swal.fire({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        icon: type,
+        title: title,
+        timer: 3000,
+    });
+}
+
+function request(url, method, data = {}, toast = false) {
     let result;
     $.ajax({
         url: url,
@@ -12,24 +23,35 @@ function request(url, method, data) {
                 data: response
             };
         },
-        error: function (response, status, xhr) {
+        error: function (response) {
+            console.log(JSON.stringify(response));
             result = {
-                code: xhr.status,
-                data: response
+                code: parseInt(response.status),
+                data: JSON.parse(response.responseText)
             };
         }
     });
+    if (toast) {
+        let type;
+        switch (result["code"]) {
+            case 200:
+                type = "success";
+                break;
+            case 400:
+                type =  "info";
+                break;
+            default:
+                type =  "error";
+                break;
+        }
+        Swal.fire({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            icon: type,
+            title: result["data"]["message"],
+            timer: 3000,
+        });
+    }
     return result;
-}
-
-function toast(title, message, type) {
-    Swal.fire({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        icon: type,
-        title: title,
-        text: message,
-        timer: 3000,
-    });
 }
