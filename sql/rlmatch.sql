@@ -1,13 +1,22 @@
-CREATE TABLE IF NOT EXISTS player (
-    id SERIAL PRIMARY KEY,
-    uuid VARCHAR(32) NOT NULL,
-    username VARCHAR(50) NOT NULL,
-    email VARCHAR(100) DEFAULT NULL,
-    token INT DEFAULT 0,
-    win INT DEFAULT 0,
-    lose INT DEFAULT 0,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE IF NOT EXISTS player
+(
+    id         SERIAL PRIMARY KEY,
+    uuid       VARCHAR(32) NOT NULL,
+    username   VARCHAR(50) NOT NULL,
+    email      VARCHAR(100) DEFAULT NULL,
+    token      INT          DEFAULT 0,
+    win        INT          DEFAULT 0,
+    lose       INT          DEFAULT 0,
+    created_at TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (uuid)
+);
+
+CREATE TABLE IF NOT EXISTS avatar (
+    id SERIAL PRIMARY KEY,
+    player_id INT,
+    data BYTEA,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (player_id) REFERENCES player(id)
 );
 
 CREATE TABLE IF NOT EXISTS friend (
@@ -67,10 +76,7 @@ CREATE TABLE IF NOT EXISTS notification (
     id SERIAL PRIMARY KEY,
     send_by int,
     receive_by int,
-    message TEXT,
     send_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    response_at TIMESTAMP,
-    response INT,
     expired_at TIMESTAMP,
     FOREIGN KEY (send_by) REFERENCES player(id),
     FOREIGN KEY (receive_by) REFERENCES player(id)
@@ -100,3 +106,22 @@ BEGIN
 END
 $body$
 LANGUAGE plpgsql;
+
+CREATE FUNCTION getNotificationType(idNotification INT)
+    RETURNS VARCHAR(10) AS
+$body$
+DECLARE
+    notifType VARCHAR(10);
+BEGIN
+    IF (SELECT count(*) FROM notification_friend nf WHERE nf.notification_id = idNotification) >= 1 THEN
+        notifType := 'friend';
+    ELSIF (SELECT count(*) FROM notification_match nm WHERE nm.notification_id = idNotification) >= 1 THEN
+        notifType := 'match';
+    ELSE
+        notifType := 'unknown';
+    END IF;
+
+    RETURN notifType;
+END
+$body$
+    LANGUAGE plpgsql;

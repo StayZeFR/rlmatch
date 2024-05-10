@@ -23,10 +23,13 @@ $routes->group("api", function ($routes) {
         $routes->post("add", "API\FriendsController::add", ["as" => "api.friends.add"]);
     });
     $routes->group("notifications", function ($routes) {
+        $routes->post("", "API\NotificationsController::getNotifications", ["as" => "api.notifications"]);
+        $routes->post("accept", "API\NotificationsController::acceptNotification", ["as" => "api.notifications.accept"]);
+        $routes->post("decline", "API\NotificationsController::declineNotification", ["as" => "api.notifications.decline"]);
+
         $routes->post("friends", "API\NotificationsController::getNotificationsFriends", ["as" => "api.notifications.friends"]);
         $routes->post("friends/send", "API\NotificationsController::sendNotificationFriend", ["as" => "api.notifications.friends.send"]);
-        $routes->post("friends/accept", "API\NotificationsController::acceptNotificationFriend", ["as" => "api.notifications.friends.accept"]);
-        $routes->post("friends/decline", "API\NotificationsController::declineNotificationFriend", ["as" => "api.notifications.friends.decline"]);
+        $routes->post("friends/sent", "API\NotificationsController::getNotificationsSent", ["as" => "api.notifications.friends.sent"]);
     });
     $routes->group("players", function ($routes) {
         $routes->get("", "API\PlayersController::getPlayers", ["as" => "api.players"]);

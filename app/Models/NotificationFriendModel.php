@@ -59,6 +59,20 @@ class NotificationFriendModel extends Model
 
     public function deleteNotification(int $id): bool
     {
-        return $this->delete($id);
+        $this->delete($id);
+        $model = new NotificationModel();
+        return $model->delete($id);
+    }
+
+    public function getNotificationsSent(int $playerId): array
+    {
+        $builder = $this->db->table("notification_friend nf");
+        return $builder->select("n.id, n.receive_by, p.username, n.send_at, n.expired_at")
+            ->join("notification n", "n.id = nf.notification_id")
+            ->join("player p", "p.id = n.receive_by")
+            ->where("n.send_by", $playerId)
+            ->where("n.expired_at >", date("Y-m-d H:i:s"))
+            ->get()
+            ->getResultArray();
     }
 }

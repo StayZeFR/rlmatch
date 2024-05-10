@@ -25,6 +25,12 @@ if (!session()->has("user") && !session()->has("token")) {
     <link rel="stylesheet" href="<?= base_url("/assets/css/style.css") ?>">
     <link rel="stylesheet" href="<?= base_url("/assets/libs/sweetalert/sweetalert2.min.css") ?>">
     <?= $this->renderSection("assets") ?>
+    <?php
+        if (session()->has("player") && session()->has("token")) {
+            echo "<script src='" . base_url("/assets/js/notification.js") . "'></script>";
+            echo "<script src='" . base_url("/assets/js/friend.js") . "'></script>";
+        }
+    ?>
     <script>
         const URL_AUTH = "<?= $url ?>";
     </script>
